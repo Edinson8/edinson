@@ -1,0 +1,42 @@
+#Ejercicio 1: Crear una clase Empleado que herede de Persona y tenga un atributo de salario
+csharp
+using System;
+public class Persona
+{
+    public string Nombre { get; set; }
+    public int Edad { get; set; }
+    // Constructor
+    public Persona(string nombre, int edad)
+    {
+        Nombre = nombre;
+        Edad = edad;
+    }
+    // Método para mostrar la información
+    public virtual void MostrarInformacion()
+    {
+        Console.WriteLine($"Nombre: {Nombre}, Edad: {Edad}");
+    }
+}
+public class Empleado : Persona
+{
+    public double Salario { get; set; }
+    // Constructor
+    public Empleado(string nombre, int edad, double salario) : base(nombre, edad)
+    {
+        Salario = salario;
+    }
+    // Sobrescribir el método MostrarInformacion
+    public override void MostrarInformacion()
+    {
+        base.MostrarInformacion();
+        Console.WriteLine($"Salario: {Salario}");
+    }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        Empleado empleado1 = new Empleado("Carlos", 30, 3000);
+        empleado1.MostrarInformacion();
+    }
+}
